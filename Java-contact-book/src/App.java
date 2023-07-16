@@ -10,8 +10,11 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         
-        System.out.print("Digite seu nome: ");
+        System.out.print("Login: ");
         String username = scanner.nextLine();
+
+        System.out.print("Senha: ");
+        String password = scanner.nextLine();
 
         boolean running = true;
         while (running) {
