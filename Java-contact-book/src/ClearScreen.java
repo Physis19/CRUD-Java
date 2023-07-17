@@ -1,17 +1,6 @@
-import java.io.IOException;
-
 public class ClearScreen {
-    public void clearScreen() throws IOException{
-        String os = System.getProperty("os.name");
-
-        if (os.contains("Windows"))
-        {
-            Runtime.getRuntime().exec("cls");
-        }
-        else
-        {
-            Runtime.getRuntime().exec("clear");
-        }
-        
+    public static void clear(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }

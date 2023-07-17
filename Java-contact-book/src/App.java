@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         final List<Contact> contacts = new ArrayList<>();
-
+        
         System.out.println("        Agendinha      ");
         System.out.println("------------------------------");
 
@@ -15,28 +15,36 @@ public class App {
 
         System.out.print("Senha: ");
         String password = scanner.nextLine();
-
-        boolean running = true;
-        while (running) {
+        
+        Login login = new Login();
+        
+        boolean authenticated = login.login(username, password);
+        
+        ClearScreen.clear();
+        while (authenticated) {
         System.out.println("Seja bem vindo " + username);
         System.out.println("Escolha uma opção!\n");
         System.out.println(" 1. Criar contato \n 2. Listar contatos \n 3. Atualizar contato \n 4. Deletar contato");
 
         int option = scanner.nextInt();
-
+        
         switch (option) {
             case 1:
+                ClearScreen.clear();
                 createContact(scanner, contacts);
                 break;
             
             case 2:
+                ClearScreen.clear();
                 listContacts(contacts);
                 break;
             
             case 3:
+                ClearScreen.clear();
                 updateContact(scanner, contacts);
                 break;
             case 4:
+                ClearScreen.clear();
                 deleteContact(scanner, contacts);
             default:
                 break;
@@ -75,6 +83,7 @@ public class App {
         Contact contact = new Contact(name, phone, age, address, occupation, notes);
         contacts.add(contact);
 
+        ClearScreen.clear();
         System.out.println("Contato criado com sucesso.");
     }
 
@@ -129,7 +138,8 @@ public class App {
         contact.setAdress(address);
         contact.setOcupation(occupation);
         contact.setNotes(notes);
-    
+        
+        ClearScreen.clear();
         System.out.println("Contato atualizado com sucesso.");
     }
 
@@ -144,6 +154,7 @@ public class App {
         }
     
         Contact contact = contacts.remove(index - 1);
+        ClearScreen.clear();
         System.out.println("Contato removido: " + contact.getName());
     }
 }
